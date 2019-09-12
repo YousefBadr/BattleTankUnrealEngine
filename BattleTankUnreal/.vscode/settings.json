@@ -1,0 +1,8 @@
+{
+	"files.exclude": {
+		"E:/Unreal Projects/BattleTank/BattleTankUnreal/.vscode": true,
+		"E:/Unreal Projects/BattleTank/BattleTankUnreal/Content": true,
+		"E:/Unreal Projects/BattleTank/BattleTankUnreal/Intermediate": true,
+		"E:/Unreal Projects/BattleTank/BattleTankUnreal/Saved": true
+	}
+}

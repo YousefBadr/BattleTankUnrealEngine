@@ -34,19 +34,17 @@ public:
 	void Fire();
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")
-	int GetRoundsLeft() const;
+	int32 GetRoundsLeft() const;
 
+	UFUNCTION(BlueprintCallable, Category  = "Setup")
+	void Initialise(UTankBarrel* BarrelToSet,UTankTurret* TurretToSet);
 
 	EFiringState GetFiringState() const;
 	
 protected:
-	UFUNCTION(BlueprintCallable, Category  = "Setup")
-	void Initialise(UTankBarrel* BarrelToSet,UTankTurret* TurretToSet);
-
  	UPROPERTY(BlueprintReadOnly, Category= "State")
 	EFiringState FiringState=EFiringState::Reloading;
 
-	int RoundsLeft = 3;
 private:
 	virtual void BeginPlay() override;
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
@@ -60,12 +58,15 @@ private:
 	UTankTurret* Turret=nullptr;
 	double LastFireTime=0;
 	FVector AimDirection;
-	
-	UPROPERTY(EditDefaultsOnly, Category = "Firing")
-	float LaunchSpeed=4000;//sinsible starting value
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf <AProjectile> ProjectileBluePrint;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	float LaunchSpeed=8000;//sinsible starting value
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	int32 RoundsLeft = 3;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float ReloadTimeInSeconds=3;	

@@ -37,7 +37,7 @@ public:
 	int32 GetRoundsLeft() const;
 
 	UFUNCTION(BlueprintCallable, Category  = "Setup")
-	void Initialise(UTankBarrel* BarrelToSet,UTankTurret* TurretToSet);
+	void Initialise(UTankBarrel* BarrelToSet,UTankTurret* TurretToSet,TSubclassOf <AProjectile> ProjectileToSet);
 
 	EFiringState GetFiringState() const;
 	
@@ -59,7 +59,7 @@ private:
 	double LastFireTime=0;
 	FVector AimDirection;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	//AProjectile* ProjectileBluePrint;
 	TSubclassOf <AProjectile> ProjectileBluePrint;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")

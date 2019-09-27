@@ -107,9 +107,10 @@ void UTankAimingComponent::AimAt(FVector HitLocation)
 		}	
 }
 
-void UTankAimingComponent::Initialise(UTankBarrel *BarrelToSet, UTankTurret *TurretToSet)
+void UTankAimingComponent::Initialise(UTankBarrel *BarrelToSet, UTankTurret *TurretToSet,TSubclassOf <AProjectile> ProjectileToSet)
 {
-	if(!ensure(BarrelToSet && TurretToSet)) return;
+	if(!ensure(BarrelToSet && TurretToSet && ProjectileToSet)) return;
+	ProjectileBluePrint=ProjectileToSet;
 	Barrel=BarrelToSet;
 	Turret=TurretToSet;
 }

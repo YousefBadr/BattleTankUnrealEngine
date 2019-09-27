@@ -41,6 +41,11 @@ private:
 	bool GetSightRayHitLocation(FVector &HitLocation) const;
 
 	bool GetLookVectorHitLocation(FVector &HitLocation, FVector LookDirection) const;
+
+	virtual void SetPawn(APawn* InPawn) override;
+
+	UFUNCTION()
+	void OnTankDeath();
 	
 	
 };

@@ -20,8 +20,8 @@ public:
 
 	// Sets default values for this actor's properties
 	AProjectile();
-	void LaunchProjectile(float Speed);
 
+	void LaunchProjectile(float Speed);
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	float ProjectileDamage=20.f;

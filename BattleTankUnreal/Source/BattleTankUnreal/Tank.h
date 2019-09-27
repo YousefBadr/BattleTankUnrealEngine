@@ -25,9 +25,11 @@ public:
 private:
 	ATank();
 
+	virtual void BeginPlay() override;
+	
 	UPROPERTY(EditDefaultsOnly ,Category = "Setup")
 	int32 StartingHealth=100;
 
 	UPROPERTY(VisibleAnywhere ,Category = "Health")// as we want to change it only on code
-	int32 CurrentHealth=StartingHealth;
+	int32 CurrentHealth;
 };

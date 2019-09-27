@@ -24,12 +24,27 @@ void ATankPlayerController::BeginPlay()
         FoundAimingComponent(TankAimingComponent);
     
 }
+void ATankPlayerController::OnTankDeath()
+{
+	StartSpectatingOnly();
+}
 void ATankPlayerController::Tick(float DeltaTime)
 {
 Super::Tick(DeltaTime);
 AimAtCrossHair();
 }
+void ATankPlayerController::SetPawn(APawn *InPawn)
+{
+    Super::SetPawn(InPawn);
+    if(InPawn)
+    {
+        auto PossessdTank=Cast<ATank>(InPawn);
+        if(!ensure(PossessdTank))return;
 
+        //Subscribe our local method to the tank's death event. 
+        PossessdTank->OnDeath.AddUniqueDynamic(this,&ATankPlayerController::OnTankDeath);
+    }
+}
 void ATankPlayerController::AimAtCrossHair()
 {
     if(!GetPawn())return;//e.g. if not possessing
@@ -88,7 +103,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector &HitLocation, FVect
         HitResult,
         StartLocation,
         EndLocation,
-        ECollisionChannel::ECC_Visibility);
+        ECollisionChannel::ECC_Camera);
     if(HitWorld)
         HitLocation=HitResult.Location;   
     else 

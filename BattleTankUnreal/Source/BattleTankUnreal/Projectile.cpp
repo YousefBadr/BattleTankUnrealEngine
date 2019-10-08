@@ -32,7 +32,7 @@ AProjectile::AProjectile()
 	CollisionMesh->SetVisibility(false);
 	
 	LaunchBlast=CreateDefaultSubobject<UParticleSystemComponent>(FName ("Launch Blast"));
-	LaunchBlast->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);;
+	LaunchBlast->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
 
 	ImpactBlast=CreateDefaultSubobject<UParticleSystemComponent>(FName ("Impact Blast"));
 	ImpactBlast->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);

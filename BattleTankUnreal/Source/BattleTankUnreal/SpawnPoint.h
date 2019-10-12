@@ -18,6 +18,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category  = "Setup")
 	void SetWheel(TSubclassOf <AActor> WheelToSet);
+	AActor* GetSpawnedActor() const;
+	
 
 protected:
 	// Called when the game starts
@@ -28,5 +30,8 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
-	TSubclassOf <AActor> SpawnClass;		
+	TSubclassOf <AActor> SpawnClass;	
+
+	UPROPERTY()	
+	AActor* SpawnedActor=nullptr;
 };

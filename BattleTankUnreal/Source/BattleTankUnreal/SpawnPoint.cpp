@@ -27,12 +27,16 @@ void USpawnPoint::BeginPlay()
 void USpawnPoint::SetWheel(TSubclassOf <AActor> WheelToSet)
 {
 	SpawnClass=WheelToSet;
-	auto NewActor=GetWorld()->SpawnActorDeferred<AActor>(SpawnClass,GetComponentTransform());
-	if(!ensure(NewActor))return;
-	NewActor->AttachToComponent(this,FAttachmentTransformRules::KeepWorldTransform);
-	UGameplayStatics::FinishSpawningActor(NewActor,GetComponentTransform());
-
+	SpawnedActor=GetWorld()->SpawnActorDeferred<AActor>(SpawnClass,GetComponentTransform());
+	if(!ensure(SpawnedActor))return;
+	SpawnedActor->AttachToComponent(this,FAttachmentTransformRules::KeepWorldTransform);
+	UGameplayStatics::FinishSpawningActor(SpawnedActor,GetComponentTransform());
 }
+AActor* USpawnPoint::GetSpawnedActor() const
+{
+	return SpawnedActor;
+}
+
 
 // Called every frame
 void USpawnPoint::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
